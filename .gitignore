@@ -43,3 +43,6 @@ build/
 
 ### personal properties ###
 application-dev.properties
+
+### database ###
+data/
