@@ -16,7 +16,7 @@ public class IndexController {
         return new ResponseEntity<>(message, HttpStatus.OK);
     }
 
-    @GetMapping(value="/home", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/home", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> getUserHome() {
         return new ResponseEntity<>("home", HttpStatus.OK);
     }
