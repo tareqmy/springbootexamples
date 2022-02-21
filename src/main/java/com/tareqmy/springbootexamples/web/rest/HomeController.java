@@ -1,10 +1,10 @@
 package com.tareqmy.springbootexamples.web.rest;
 
-import com.tareqmy.springbootexamples.web.payload.response.MessageResponse;
+import com.tareqmy.springbootexamples.data.entity.User;
+import com.tareqmy.springbootexamples.service.AccountService;
+import com.tareqmy.springbootexamples.web.dto.UserDTO;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 @SecurityRequirement(name = "tareqmySchemeKey")
 public class HomeController {
 
-    @GetMapping(value = "/home", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<MessageResponse> getUserHome() {
-        return new ResponseEntity<>(new MessageResponse("home"), HttpStatus.OK);
+    @Autowired
+    private AccountService accountService;
+
+    @GetMapping("/user")
+    public UserDTO getProfile() {
+        User currentLoggedInUser = accountService.getUser();
+        return new UserDTO(currentLoggedInUser);
     }
 }

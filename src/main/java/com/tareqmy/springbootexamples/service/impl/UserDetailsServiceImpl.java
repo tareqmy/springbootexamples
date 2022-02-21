@@ -1,4 +1,4 @@
-package com.tareqmy.springbootexamples.service;
+package com.tareqmy.springbootexamples.service.impl;
 
 import com.tareqmy.springbootexamples.data.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
