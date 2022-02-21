@@ -1,0 +1,7 @@
+${AnsiColor.BRIGHT_BLACK}
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ |s|p|r|i|n|g|b|o|o|t|e|x|a|m|p|l|e|s|
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+${AnsiColor.BLACK}
+http://patorjk.com/software/taag/#p=display&f=Digital&t=springbootexamples
+${AnsiColor.DEFAULT}
