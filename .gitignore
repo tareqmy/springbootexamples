@@ -40,3 +40,6 @@ build/
 
 ### sdkman ###
 .sdkmanrc
+
+### personal properties ###
+application-dev.properties

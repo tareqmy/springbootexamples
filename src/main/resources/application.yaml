@@ -1,0 +1,29 @@
+# Spring properties
+spring:
+    application:
+        name: SpringBootExamples
+    profiles:
+        active: dev
+
+logging:
+    level:
+        root: INFO
+        #        web: DEBUG
+        com.tareqmy.springbootexamples: DEBUG
+
+# App Properties
+springbootexamples:
+    app:
+        jwtSecret: tareqmySecretKey
+        jwtExpirationMs: 86400000
+        securitySchemeKey: tareqmySchemeKey
+
+# Swagger properties
+springdoc:
+    swagger-ui:
+        path: /api/open/swagger/ui.html
+        enabled: true
+    api-docs:
+        path: /api/open/docs
+        enabled: true
+    packages-to-scan: 'com.tareqmy.springbootexamples.web.rest'
