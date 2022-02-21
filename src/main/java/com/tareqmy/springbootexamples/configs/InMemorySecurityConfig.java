@@ -24,12 +24,12 @@ public class InMemorySecurityConfig {
         //User Role
         UserDetails theUser = User.withUsername("user")
             .passwordEncoder(passwordEncoder::encode)
-            .password("userpassword").roles("USER").build();
+            .password("user").roles("USER").build();
 
         //Manager Role
         UserDetails theManager = User.withUsername("admin")
             .passwordEncoder(passwordEncoder::encode)
-            .password("adminpassword").roles("ADMIN").build();
+            .password("admin").roles("ADMIN").build();
 
         InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
 
