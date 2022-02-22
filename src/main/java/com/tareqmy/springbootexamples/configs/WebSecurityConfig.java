@@ -3,6 +3,7 @@ package com.tareqmy.springbootexamples.configs;
 import com.tareqmy.springbootexamples.web.filters.JWTTokenFilter;
 import com.tareqmy.springbootexamples.web.security.RestAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -50,6 +51,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/auth/**").permitAll()
             .antMatchers("/api/open/**").permitAll()
             .antMatchers("/h2/console/**").permitAll()
+            //.antMatchers("/api/actuator/**")..hasAnyRole("SYSTEM_ADMIN", "ADMIN")//the next line does the same thing
+            .requestMatchers(EndpointRequest.toAnyEndpoint()).hasAnyRole("SYSTEM_ADMIN", "ADMIN")
             .anyRequest().authenticated();
 
         http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

@@ -40,4 +40,18 @@ springdoc:
     api-docs:
         path: /api/open/docs
         enabled: true
-    packages-to-scan: 'com.tareqmy.springbootexamples.web.rest'
+    show-actuator: true
+
+
+# Management properties
+management:
+    endpoints:
+        web:
+            base-path: /api/actuator
+            exposure:
+                include: "*"
+                exclude: caches, shutdown
+        enabled-by-default: true
+    info:
+        git:
+            enabled: true
