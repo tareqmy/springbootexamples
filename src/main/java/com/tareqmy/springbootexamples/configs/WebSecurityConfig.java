@@ -3,11 +3,14 @@ package com.tareqmy.springbootexamples.configs;
 import com.tareqmy.springbootexamples.web.filters.JWTTokenFilter;
 import com.tareqmy.springbootexamples.web.security.RestAuthenticationEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
+import org.springframework.security.access.vote.RoleHierarchyVoter;
+import org.springframework.security.access.vote.RoleVoter;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -19,17 +22,83 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig {
 
-    @Autowired
-    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+    @Configuration
+    @Order(1)
+    public static class SecurityConfigBasicAuth extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private UserDetailsService userDetailsService;
+        private final UserDetailsService userDetailsService;
 
-    @Bean
-    public JWTTokenFilter jwtTokenFilter() {
-        return new JWTTokenFilter();
+        private final RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+
+        @Autowired
+        public SecurityConfigBasicAuth(UserDetailsService userDetailsService,
+                                       RestAuthenticationEntryPoint restAuthenticationEntryPoint) {
+            this.userDetailsService = userDetailsService;
+            this.restAuthenticationEntryPoint = restAuthenticationEntryPoint;
+        }
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            // authentication: http basic
+            http.cors()
+                .and().csrf().disable()
+                .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
+                .and().httpBasic()
+                .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+            http.userDetailsService(userDetailsService);
+
+            // authorization: access control
+            http.antMatcher("/api/actuator/**").authorizeRequests()
+                .antMatchers("/api/actuator/**").access("hasRole('ADMIN')");
+        }
+    }
+
+    @Configuration
+    @Order(10)
+    public static class SecurityConfigJsonWebToken extends WebSecurityConfigurerAdapter {
+
+        @Autowired
+        private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+
+        @Autowired
+        private UserDetailsService userDetailsService;
+
+        @Bean
+        public JWTTokenFilter jwtTokenFilter() {
+            return new JWTTokenFilter();
+        }
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            // authentication: jwt
+            http.cors()
+                .and().csrf().disable()
+                .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
+                .and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
+            http.userDetailsService(userDetailsService);
+
+            http.antMatcher("/**").authorizeRequests()
+                .antMatchers("/", "/index").permitAll()
+                .antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/api/open/**").permitAll()
+                .antMatchers("/h2/console/**").permitAll()
+                .anyRequest().authenticated();
+
+            http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        }
+
+        @Bean
+        @Override
+        public AuthenticationManager authenticationManagerBean() throws Exception {
+            return super.authenticationManagerBean();
+        }
     }
 
     @Bean
@@ -37,36 +106,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        // authentication: jwt
-        http.cors()
-            .and().csrf().disable()
-            .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
-            .and()
-            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
-            .authorizeRequests()
-            .antMatchers("/", "/index").permitAll()
-            .antMatchers("/api/auth/**").permitAll()
-            .antMatchers("/api/open/**").permitAll()
-            .antMatchers("/h2/console/**").permitAll()
-            //.antMatchers("/api/actuator/**")..hasAnyRole("SYSTEM_ADMIN", "ADMIN")//the next line does the same thing
-            .requestMatchers(EndpointRequest.toAnyEndpoint()).hasAnyRole("SYSTEM_ADMIN", "ADMIN")
-            .anyRequest().authenticated();
-
-        http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-    }
-
-    @Override
-    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-        authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+    //https://docs.spring.io/spring-security/site/docs/current/reference/html5/#authz-hierarchical-roles
+    @Bean
+    public RoleVoter roleVoter() {
+        return new RoleHierarchyVoter(roleHierarchy());
     }
 
     @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
+    public RoleHierarchy roleHierarchy() {
+        RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
+        roleHierarchy.setHierarchy("ROLE_SYSTEM_ADMIN > ROLE_ADMIN > ROLE_USER");
+        return roleHierarchy;
     }
 }
 
