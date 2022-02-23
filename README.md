@@ -4,6 +4,9 @@
 Simple configurations for most common usecases with sprint boot.
 Check each branch for different usecases.
 
+### metrics and monitoring
+check a basic monitoring in here -> https://github.com/tareqmy/springbootmonitoring
+
 ### Reference Documentation
 
 For further reference, please consider the following sections:
