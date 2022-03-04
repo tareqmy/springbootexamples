@@ -2,13 +2,13 @@
 
 ### todo
 - auth -> oauth2
-- async, scheduled, threadpools
 - data jpa -> postgres, mariadb, redis, influxdb, dynamodb
 - migration -> liquibase, flyway
 - cache -> second level caching
 - cloud, eureka/zookeeper, configs, gateway, ribbon, tracing
 - elasticsearch, kibana, logstash
 - testing - junit, mockito, whatelse?
+- rabbitmq, kafka, sse
 
 ### about
 Simple configurations for most common usecases with sprint boot.

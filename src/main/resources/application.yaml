@@ -31,7 +31,17 @@ spring:
         console:
             enabled: true
             path: /h2/console
-
+    task:
+        execution:
+            pool:
+                core-size: 5
+                max-size: 20
+                queue-capacity: 10000
+            thread-name-prefix: exampleExec-
+        scheduling:
+            pool:
+                size: 5
+            thread-name-prefix: exampleSchedule-
 # App Properties
 springbootexamples:
     app:
