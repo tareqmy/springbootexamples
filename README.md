@@ -1,5 +1,16 @@
 # Getting Started
 
+### todo
+- auth -> oauth2
+- hikari config
+- async, scheduled, threadpools
+- data jpa -> postgres, mariadb, redis, influxdb, dynamodb
+- migration -> liquibase, flyway
+- cache -> second level caching
+- cloud, eureka/zookeeper, configs, gateway, ribbon, tracing
+- elasticsearch, kibana, logstash
+- testing - junit, mockito, whatelse?
+
 ### about
 Simple configurations for most common usecases with sprint boot.
 Check each branch for different usecases.
