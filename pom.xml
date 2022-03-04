@@ -38,6 +38,10 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
             <scope>runtime</scope>
@@ -67,12 +71,17 @@
             <version>1.6.6</version>
         </dependency>
         <dependency>
+<!--//from preferences > build, execution, deployment > compiler > annotation processor > enable annotation processing-->
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
             <scope>provided</scope>
         </dependency>
 
+<!--//for live reload install extension in browser plus enable-->
+<!--//from intellij idea edit run configuration of application with following-->
+<!--// 1. on update action: update trigger file-->
+<!--// 2. on frame deactivation: update resources-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>

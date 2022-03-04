@@ -2,7 +2,6 @@
 
 ### todo
 - auth -> oauth2
-- hikari config
 - async, scheduled, threadpools
 - data jpa -> postgres, mariadb, redis, influxdb, dynamodb
 - migration -> liquibase, flyway
