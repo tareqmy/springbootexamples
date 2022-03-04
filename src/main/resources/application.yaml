@@ -48,7 +48,15 @@ springbootexamples:
         jwtSecret: tareqmySecretKey
         jwtExpirationMs: 86400000
         securitySchemeKey: tareqmySchemeKey
-
+    mail:
+        host: localhost
+        username:
+        password:
+        port: 1025
+        protocol: smtp
+        tls: false
+        auth: false
+        from: no-reply@springbootexamples.tareqmy.com
 # Swagger properties
 springdoc:
     swagger-ui:
