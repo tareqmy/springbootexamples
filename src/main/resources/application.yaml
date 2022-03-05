@@ -5,6 +5,7 @@ logging:
         #        web: DEBUG
         com.tareqmy.springbootexamples: DEBUG
 
+
 # Spring properties
 spring:
     application:
@@ -42,6 +43,8 @@ spring:
             pool:
                 size: 5
             thread-name-prefix: exampleSchedule-
+
+
 # App Properties
 springbootexamples:
     app:
@@ -57,6 +60,8 @@ springbootexamples:
         tls: false
         auth: false
         from: no-reply@springbootexamples.tareqmy.com
+
+
 # Swagger properties
 springdoc:
     swagger-ui:

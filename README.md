@@ -1,14 +1,16 @@
 # Getting Started
 
 ### todo
-- auth -> oauth2
+- auth -> oauth2, openid, amazon cognito
 - data jpa -> postgres, mariadb, redis, influxdb, dynamodb
 - migration -> liquibase, flyway
 - cache -> second level caching
-- cloud, eureka/zookeeper, configs, gateway, ribbon, tracing
+- cloud -> eureka/zookeeper/consul, configs, gateway(load balancing and rate limiting), ribbon, tracing
 - elasticsearch, kibana, logstash
 - testing - junit, mockito, whatelse?
-- rabbitmq, kafka, sse
+- message/events -> rabbitmq, kafka, sse
+- code review tools -> sonarqube 
+- apm -> datadog/dynatrace/sentry/newrelic
 
 ### about
 Simple configurations for most common usecases with sprint boot.
@@ -16,6 +18,15 @@ Check each branch for different usecases.
 
 ### metrics and monitoring
 check a basic monitoring in here -> https://github.com/tareqmy/springbootmonitoring
+
+### jmx instruction for remote connection
+- the application must run with the following VM options
+  - -Dcom.sun.management.jmxremote.port=<jmxPort> 
+  - -Dcom.sun.management.jmxremote.ssl=false 
+  - -Dcom.sun.management.jmxremote.authenticate=false
+- from the jconsole use <hostIP>:<jmxPort>
+- check here for authentication options -> https://docs.oracle.com/en/java/javase/11/management/monitoring-and-management-using-jmx-technology.htm
+- dont know how stop it from connecting locally run spring bot applications!
 
 ### Reference Documentation
 

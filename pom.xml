@@ -15,6 +15,8 @@
     <description>springbootexamples</description>
     <properties>
         <java.version>11</java.version>
+        <io.jsonwebtoken.jjwt.version>0.9.1</io.jsonwebtoken.jjwt.version>
+        <org.springdoc.springdoc-openapi.version>1.6.6</org.springdoc.springdoc-openapi.version>
     </properties>
     <dependencies>
         <dependency>
@@ -38,6 +40,16 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-jmx</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
@@ -49,11 +61,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
-        <dependency>
-            <groupId>io.micrometer</groupId>
-            <artifactId>micrometer-registry-prometheus</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -66,20 +74,21 @@
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
+            <version>${io.jsonwebtoken.jjwt.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
-            <version>1.6.6</version>
+            <version>${org.springdoc.springdoc-openapi.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-security</artifactId>
-            <version>1.6.6</version>
+            <version>${org.springdoc.springdoc-openapi.version}</version>
         </dependency>
-        <dependency>
+
 <!--//from preferences > build, execution, deployment > compiler > annotation processor > enable annotation processing-->
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.22</version>
@@ -96,6 +105,7 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
