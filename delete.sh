@@ -1,3 +1,3 @@
 source docker/.env
 echo "Delete existing containers..."
-docker rm -f $MAILHOG
+docker rm -f $MAILHOG $DATABASE

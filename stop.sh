@@ -1,3 +1,3 @@
 source docker/.env
 echo "Stopping existing containers..."
-docker stop $MAILHOG
+docker stop $MAILHOG $DATABASE

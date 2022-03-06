@@ -13,10 +13,10 @@ spring:
     profiles:
         active: dev
     datasource:
-        url: jdbc:h2:mem:mydb
-        username: sa
-        password: password
-        driverClassName: org.h2.Driver
+        url: jdbc:postgresql://localhost:5432/springbootexamplesdb
+        username: dbadmin
+        password: dbadmin
+        driverClassName: org.postgresql.Driver
         hikari:
             maximum-pool-size: 15
             minimum-idle: 5
@@ -25,12 +25,8 @@ spring:
             max-lifetime: 300000 #5 minutes
             pool-name: exampleHikariPool
     jpa:
-        spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+        spring.jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
         open-in-view: false
-    h2:
-        console:
-            enabled: true
-            path: /h2/console
     task:
         execution:
             pool:
