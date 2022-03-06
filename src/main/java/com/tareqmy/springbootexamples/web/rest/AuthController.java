@@ -16,7 +16,6 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -27,6 +26,7 @@ public class AuthController {
     @Autowired
     private JwtUtils jwtUtils;
 
+    @CrossOrigin(origins = "*", maxAge = 3600)
     @PostMapping("/signin")
     public ResponseEntity<JwtResponse> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 

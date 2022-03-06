@@ -60,10 +60,10 @@ springbootexamples:
 # Swagger properties
 springdoc:
     swagger-ui:
-        path: /api/open/swagger/ui.html
+        path: /api/openapi/swagger/ui.html
         enabled: true
     api-docs:
-        path: /api/open/docs
+        path: /api/openapi/docs
         enabled: true
     show-actuator: true
 

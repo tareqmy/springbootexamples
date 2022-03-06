@@ -86,8 +86,9 @@ public class WebSecurityConfig {
             http.antMatcher("/**").authorizeRequests()
                 .antMatchers("/", "/index").permitAll()
                 .antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/open/**").permitAll()
-                .antMatchers("/h2/console/**").permitAll()
+                .antMatchers("/api/openapi/**").permitAll()
+                .antMatchers("/api/users/**").access("hasRole('ADMIN')")
+                .antMatchers("/api/users/**").authenticated()
                 .anyRequest().authenticated();
 
             http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
