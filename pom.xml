@@ -87,7 +87,23 @@
             <version>${org.springdoc.springdoc-openapi.version}</version>
         </dependency>
 
-<!--//from preferences > build, execution, deployment > compiler > annotation processor > enable annotation processing-->
+        <!-- commons -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <!--//from preferences > build, execution, deployment > compiler > annotation processor > enable annotation processing-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -95,10 +111,10 @@
             <scope>provided</scope>
         </dependency>
 
-<!--//for live reload install extension in browser plus enable-->
-<!--//from intellij idea edit run configuration of application with following-->
-<!--// 1. on update action: update trigger file-->
-<!--// 2. on frame deactivation: update resources-->
+        <!--//for live reload install extension in browser plus enable-->
+        <!--//from intellij idea edit run configuration of application with following-->
+        <!--// 1. on update action: update trigger file-->
+        <!--// 2. on frame deactivation: update resources-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
