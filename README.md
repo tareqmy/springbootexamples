@@ -3,7 +3,7 @@
 ### todo
 - auth -> oauth2, openid, amazon cognito
 - data jpa -> postgres, mariadb, redis, influxdb, dynamodb
-- migration -> liquibase, flyway
+- migration -> liquibase
 - cache -> second level caching
 - cloud -> eureka/zookeeper/consul, configs, gateway(load balancing and rate limiting), ribbon, tracing
 - elasticsearch, kibana, logstash
