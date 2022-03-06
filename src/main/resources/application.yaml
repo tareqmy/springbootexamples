@@ -13,10 +13,10 @@ spring:
     profiles:
         active: dev
     datasource:
-        url: jdbc:postgresql://localhost:5432/springbootexamplesdb
+        url: jdbc:mariadb://localhost:3306/springbootexamplesdb
         username: dbadmin
         password: dbadmin
-        driverClassName: org.postgresql.Driver
+        driverClassName: org.mariadb.jdbc.Driver
         hikari:
             maximum-pool-size: 15
             minimum-idle: 5
@@ -25,7 +25,7 @@ spring:
             max-lifetime: 300000 #5 minutes
             pool-name: exampleHikariPool
     jpa:
-        spring.jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
+        spring.jpa.database-platform: org.hibernate.dialect.MariaDB103Dialect
         open-in-view: false
     task:
         execution:

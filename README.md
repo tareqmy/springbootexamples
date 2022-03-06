@@ -1,9 +1,8 @@
 # Getting Started
 
 ### todo
-- auth -> oauth2, openid, amazon cognito
-- data jpa -> postgres, mariadb, redis, influxdb, dynamodb
-- migration -> flyway
+- auth -> apikey, oauth2, openid, amazon cognito
+- data jpa -> redis, influxdb, dynamodb
 - cache -> second level caching
 - cloud -> eureka/zookeeper/consul, configs, gateway(load balancing and rate limiting), ribbon, tracing
 - elasticsearch, kibana, logstash

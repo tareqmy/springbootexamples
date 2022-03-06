@@ -1,23 +1,6 @@
 version: '3.7'
 
 services:
-    sbedb:
-        image: tareqmy/postgres:latest
-        container_name: ${DATABASE}
-        hostname: ${DATABASE}
-        restart: unless-stopped
-        environment:
-            - POSTGRES_DB=${DB_NAME}
-            - POSTGRES_USER=${DB_USER}
-            - POSTGRES_PASSWORD=${DB_PASS}
-        stdin_open: true
-        volumes:
-            - springbootexamples_pgdata:/var/lib/postgresql/data
-            - springbootexamples_pgconf:/etc/postgresql
-            - springbootexamples_pglog:/var/log/postgresql
-        tty: true
-        ports:
-            - "5432:5432"
     sbemh:
         image: mailhog/mailhog:latest
         container_name: ${MAILHOG}
@@ -26,10 +9,21 @@ services:
         ports:
             - "1025:1025"
             - "8025:8025"
+    sbedb:
+        image: mariadb:latest
+        container_name: ${DATABASE}
+        hostname: ${DATABASE}
+        restart: unless-stopped
+        environment:
+            - MARIADB_ROOT_PASSWORD=root
+            - MARIADB_DATABASE=${DB_NAME}
+            - MARIADB_USER=${DB_USER}
+            - MARIADB_PASSWORD=${DB_PASS}
+        volumes:
+            - springbootexamples_mariadb_data:/var/lib/mysql
+        ports:
+            - "3306:3306"
+
 volumes:
-    springbootexamples_pgdata:
-        driver: local
-    springbootexamples_pgconf:
-        driver: local
-    springbootexamples_pglog:
+    springbootexamples_mariadb_data:
         driver: local
