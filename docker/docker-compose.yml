@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+    sbemh:
+        image: mailhog/mailhog:latest
+        container_name: ${MAILHOG}
+        hostname: ${MAILHOG}
+        restart: unless-stopped
+        ports:
+            - "1025:1025"
+            - "8025:8025"
