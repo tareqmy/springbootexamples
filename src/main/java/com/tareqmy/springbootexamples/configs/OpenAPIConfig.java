@@ -19,7 +19,7 @@ public class OpenAPIConfig {
             .info(new Info().title("SpringBootExamples API")
                 .description("Spring boot example application")
                 .version("v0.0.1")
-                .license(new License().name("Apache 2.0").url("http://springdoc.org")))
+                .license(new License().name("Apache 2.0").url("https://www.apache.org/licenses/LICENSE-2.0")))
             .components(new Components()
                 .addSecuritySchemes(springBootExamplesProperties.getSecuritySchemeKey(),
                     new SecurityScheme()

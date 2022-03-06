@@ -9,7 +9,6 @@
 - elasticsearch, kibana, logstash
 - testing - junit, mockito, whatelse?
 - message/events -> rabbitmq, kafka, sse
-- code review tools -> sonarqube 
 - apm -> datadog/dynatrace/sentry/newrelic
 
 ### about
@@ -27,6 +26,14 @@ check a basic monitoring in here -> https://github.com/tareqmy/springbootmonitor
 - from the jconsole use <hostIP>:<jmxPort>
 - check here for authentication options -> https://docs.oracle.com/en/java/javase/11/management/monitoring-and-management-using-jmx-technology.htm
 - dont know how stop it from connecting locally run spring bot applications!
+
+### sonarQube instructions
+- running sonarqube locally through docker
+- installed sonarlint plugin in idea
+- logged into sonarqube http://localhost:9000/ with default login admin/admin
+- created a project key and token
+- copied the command in sonarqube.sh and run the command from the terminal
+- the report is found in the ui for the project
 
 ### Reference Documentation
 

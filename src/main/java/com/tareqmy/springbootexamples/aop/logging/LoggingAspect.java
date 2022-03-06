@@ -25,6 +25,9 @@ public class LoggingAspect {
     @Pointcut("within(com.tareqmy.springbootexamples.service..*)" +
         " || within(com.tareqmy.springbootexamples.web.rest..*)")
     public void loggingPointcut() {
+        /*
+         * this method is empty but needed because of the annotation needed for pointcuts.
+         */
     }
 
     @AfterThrowing(pointcut = "loggingPointcut()", throwing = "e")

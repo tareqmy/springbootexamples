@@ -43,12 +43,11 @@ public class WebSecurityConfig {
         protected void configure(HttpSecurity http) throws Exception {
             // authentication: http basic
             http.cors()
-                .and().csrf().disable()
+                .and()
+                .csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
                 .and().httpBasic()
-                .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
             http.userDetailsService(userDetailsService);
 
@@ -77,10 +76,10 @@ public class WebSecurityConfig {
         protected void configure(HttpSecurity http) throws Exception {
             // authentication: jwt
             http.cors()
-                .and().csrf().disable()
-                .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
                 .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .csrf().disable()
+                .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint)
+                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
             http.userDetailsService(userDetailsService);
 

@@ -34,7 +34,7 @@ public class EmailServiceImpl implements EmailService {
     @Value("${springbootexamples.mail.from}")
     private String from;
 
-    private final Locale locale = Locale.US;
+    private static final Locale locale = Locale.US;
 
     @Autowired
     public EmailServiceImpl(JavaMailSenderImpl javaMailSender, MessageSource messageSource, SpringTemplateEngine templateEngine) {

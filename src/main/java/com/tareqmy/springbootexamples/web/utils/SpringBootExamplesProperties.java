@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties(prefix = "springbootexamples.app")
 public class SpringBootExamplesProperties {
 
-    private static String jwtSecret;
+    private String jwtSecret;
 
     private Long jwtExpirationMs;
 
