@@ -16,13 +16,14 @@ import java.util.stream.Collectors;
 /**
  * Created by tareqmy at 6/3/22
  */
-@RestController("/api/users")
+@RestController
+@RequestMapping("/api/users")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("/")
+    @GetMapping
     public List<UserDTO> getUsers() {
         return userService.findAll()
             .stream()
@@ -37,17 +38,17 @@ public class UserController {
         return ResponseEntity.ok().body(userDTO);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public ResponseEntity<UserDTO> addUser(@Valid @RequestBody UserDTO userDTO) {
         UserDTO dto = userService.addUser(userDTO).map(UserDTO::new)
             .orElseThrow(() -> new ResourceNotFoundException("Could not create :: " + userDTO));
         return ResponseEntity.ok().body(dto);
     }
 
-    @PutMapping("/{userId}")
+    @PutMapping
     public ResponseEntity<UserDTO> updateUser(@Valid @RequestBody UserDTO userDTO) {
         UserDTO dto = userService.updateUser(userDTO).map(UserDTO::new)
-            .orElseThrow(() -> new ResourceNotFoundException("Could not create :: " + userDTO));
+            .orElseThrow(() -> new ResourceNotFoundException("Could not update :: " + userDTO));
         return ResponseEntity.ok().body(dto);
     }
 
