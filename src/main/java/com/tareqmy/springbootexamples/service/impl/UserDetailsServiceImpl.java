@@ -20,13 +20,13 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(final String email) {
-        log.info("User sign in requested by " + email);
-        return userRepository.findOneByUsername(email).map(user -> {
+    public UserDetails loadUserByUsername(final String username) {
+        log.info("User sign in requested by " + username);
+        return userRepository.findOneByUsername(username).map(user -> {
             log.info("Found user {}", user);
             return user;
-        }).orElseThrow(() -> new UsernameNotFoundException("User " + email + " was not found in the " +
-            "database"));
+        }).orElseThrow(() -> new UsernameNotFoundException("User " + username
+            + " was not found in the database"));
     }
 }
 

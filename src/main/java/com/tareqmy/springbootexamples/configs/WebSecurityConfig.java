@@ -61,15 +61,15 @@ public class WebSecurityConfig {
     @Order(10)
     public static class SecurityConfigJsonWebToken extends WebSecurityConfigurerAdapter {
 
-        @Autowired
-        private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+        private final RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+
+        private final UserDetailsService userDetailsService;
 
         @Autowired
-        private UserDetailsService userDetailsService;
-
-        @Bean
-        public JWTTokenFilter jwtTokenFilter() {
-            return new JWTTokenFilter();
+        public SecurityConfigJsonWebToken(RestAuthenticationEntryPoint restAuthenticationEntryPoint,
+                                          UserDetailsService userDetailsService) {
+            this.restAuthenticationEntryPoint = restAuthenticationEntryPoint;
+            this.userDetailsService = userDetailsService;
         }
 
         @Override
@@ -92,6 +92,11 @@ public class WebSecurityConfig {
                 .anyRequest().authenticated();
 
             http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        }
+
+        @Bean
+        public JWTTokenFilter jwtTokenFilter() {
+            return new JWTTokenFilter();
         }
 
         @Bean

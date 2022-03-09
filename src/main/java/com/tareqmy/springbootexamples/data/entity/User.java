@@ -44,6 +44,9 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @Column(name = "api_key", length = 36)
+    private String apiKey;
+
     // ----- userDetails methods -------
 
     @Override

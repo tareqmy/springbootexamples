@@ -20,4 +20,10 @@ public class AccountController {
         User currentLoggedInUser = accountService.getUser();
         return new AccountDTO(currentLoggedInUser);
     }
+
+    @GetMapping("/apikey")
+    public String generateAPIKey() {
+        User currentLoggedInUser = accountService.getUser();
+        return accountService.generateAPIKey(currentLoggedInUser);
+    }
 }

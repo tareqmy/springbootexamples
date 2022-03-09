@@ -11,4 +11,6 @@ public interface AccountService {
     boolean isAdmin();
 
     boolean isUser();
+
+    String generateAPIKey(User user);
 }

@@ -1,7 +1,7 @@
 # Getting Started
 
 ### todo
-- auth -> apikey, oauth2, openid, amazon cognito
+- auth -> salt, storepassword with scheme, delegatepasswordencoder, apikey, oauth2, openid, amazon cognito
 - data jpa -> redis, influxdb, dynamodb
 - cache -> second level caching
 - cloud -> eureka/zookeeper/consul, configs, gateway(load balancing and rate limiting), ribbon, tracing
