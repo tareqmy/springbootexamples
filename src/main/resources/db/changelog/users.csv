@@ -1,4 +1,4 @@
 username,first_name,last_name,password,role
-system,System,Name,$2a$12$bzZhkvjreqErTnDPvhWvm.R6Vz4QwivQqmopWkIHAOGMti5GPM2qC,ROLE_SYSTEM_ADMIN
-admin,Admin,Name,$2a$12$aP.viZBtc6k5KVuJ.uaTce1R3wpP3XehfIBVzNL8dOEN6pd/jQmNK,ROLE_ADMIN
-user,User,Name,$2a$12$Tq5Od/5n7TCioqKRFh8Sw.7SRHbSC0ZcEkyAhXRMidggQWw.2MUK6,ROLE_USER
+system,System,Name,{bcrypt}$2a$12$uXWNCFgF6GDv6oSgh9uPvOO9xOS3Zq433vDAcKWdA9LSsEoeGR6hS,ROLE_SYSTEM_ADMIN
+admin,Admin,Name,{bcrypt}$2a$12$22.XrHMDA0SqgxoYnAGhHui2QxmL.iy/QwLm.KWEbvoMdXH4ZgGuy,ROLE_ADMIN
+user,User,Name,{bcrypt}$2a$12$vnOpSWESVv798rODWWLF4e4WQvlCjVJHRbDgelSzvhYTcG5pgkkp6,ROLE_USER

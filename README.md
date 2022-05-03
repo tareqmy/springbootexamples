@@ -1,18 +1,18 @@
 # Getting Started
 
 ### todo
-- auth -> salt, storepassword with scheme, delegatepasswordencoder, apikey, oauth2, openid, amazon cognito
+- security -> apikey, oauth2, openid, amazon cognito
+- cloud -> eureka/zookeeper/consul, configs, gateway(load balancing and rate limiting), ribbon, tracing
+- testing - junit, mockito, whatelse?
 - data jpa -> redis, influxdb, dynamodb
 - cache -> second level caching
-- cloud -> eureka/zookeeper/consul, configs, gateway(load balancing and rate limiting), ribbon, tracing
-- elasticsearch, kibana, logstash
-- testing - junit, mockito, whatelse?
 - message/events -> rabbitmq, kafka, sse
+- elasticsearch, kibana, logstash
 - apm -> datadog/dynatrace/sentry/newrelic
 
 ### about
 Simple configurations for most common usecases with sprint boot.
-Check each branch for different usecases.
+Check each branches/tags for different usecases.
 
 ### metrics and monitoring
 check a basic monitoring in here -> https://github.com/tareqmy/springbootmonitoring
