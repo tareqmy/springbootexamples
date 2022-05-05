@@ -1,3 +1,3 @@
 source docker/.env
 echo "Starting existing containers..."
-docker start $MAILHOG $DATABASE
+docker start ${APIUI} $MAILHOG $DATABASE

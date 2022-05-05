@@ -1,6 +1,6 @@
 FROM openjdk:11-jre-slim as builder
 LABEL creator="Tareq Mohammad Yousuf"
-LABEL email="tareq.yousuf@vivacomsolutions.com"
+LABEL email="tareq.y@gmail.com"
 WORKDIR application
 ARG JAR_FILE=springbootexamples.jar
 COPY ${JAR_FILE} application.jar

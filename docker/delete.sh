@@ -1,3 +1,3 @@
 source .env
 
-sudo docker rm -f ${APP} ${MAILHOG} ${DATABASE}
+sudo docker rm -f ${APP} ${APIUI} ${MAILHOG} ${DATABASE}

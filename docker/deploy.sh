@@ -1,9 +1,9 @@
- source .env
+source .env
 
- ./delete.sh
+sudo sh delete.sh
 
- echo "Docker compose UP..."
+echo "Docker compose UP..."
 
- docker-compose up -d
+docker-compose --file docker-compose-production.yml up -d
 
- ./logs.sh
+sudo sh logs.sh

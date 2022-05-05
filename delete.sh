@@ -1,3 +1,3 @@
 source docker/.env
 echo "Delete existing containers..."
-docker rm -f $MAILHOG $DATABASE
+docker rm -f ${APIUI} $MAILHOG $DATABASE

@@ -55,13 +55,22 @@ springbootexamples:
         tls: false
         auth: false
         from: no-reply@springbootexamples.tareqmy.com
+    clientApp:
+        name: sbeApp
+    cors:
+        allowed-origins: "http://localhost:8082"
+        allowed-methods: "*"
+        allowed-headers: "*"
+        exposed-headers: "Authorization,Link,X-Total-Count,X-${springbootexamples.clientApp.name}-alert,X-${springbootexamples.clientApp.name}-error,X-${springbootexamples.clientApp.name}-params"
+        allow-credentials: true
+        max-age: 1800
 
 
-# Swagger properties
+# Springdoc properties
 springdoc:
     swagger-ui:
         path: /api/openapi/swagger/ui.html
-        enabled: true
+        enabled: false
     api-docs:
         path: /api/openapi/docs
         enabled: true

@@ -1,1 +1,1 @@
-sudo docker logs -f ${APP}
+docker logs -f ${APP}
