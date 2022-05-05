@@ -2,8 +2,9 @@
 
 ### todo
 - security -> apikey, oauth2, openid, amazon cognito
-- cloud -> eureka/zookeeper/consul, configs, gateway(load balancing and rate limiting), ribbon, tracing
-- testing - junit, mockito, whatelse?
+- cloud -> eureka/zookeeper/consul, discovery/registry-server, config-server, 
+           gateway(load balancing and rate limiting), ribbon, openfeign, aws xray/zipkin
+- testing - unit testing, service testing, integration testing
 - data jpa -> redis, influxdb, dynamodb
 - cache -> second level caching
 - message/events -> rabbitmq, kafka, sse
@@ -33,6 +34,9 @@ check a basic monitoring in here -> https://github.com/tareqmy/springbootmonitor
 - created a project key and token
 - copied the command in sonarqube.sh and run the command from the terminal
 - the report is found in the ui for the project
+
+### dockerization instructions
+- https://docs.spring.io/spring-boot/docs/current/reference/html/container-images.html#container-images.dockerfiles
 
 ### Reference Documentation
 

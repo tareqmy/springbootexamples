@@ -1,0 +1,43 @@
+version: '3.7'
+
+services:
+    sbemh:
+        image: mailhog/mailhog:latest
+        container_name: ${MAILHOG}
+        hostname: ${MAILHOG}
+        restart: unless-stopped
+        ports:
+            - "1025:1025"
+            - "8025:8025"
+    sbedb:
+        image: mariadb:latest
+        container_name: ${DATABASE}
+        hostname: ${DATABASE}
+        restart: unless-stopped
+        environment:
+            - MARIADB_ROOT_PASSWORD=root
+            - MARIADB_DATABASE=${DB_NAME}
+            - MARIADB_USER=${DB_USER}
+            - MARIADB_PASSWORD=${DB_PASS}
+        volumes:
+            - springbootexamples_mariadb_data:/var/lib/mysql
+        ports:
+            - "3306:3306"
+    sbeapp:
+        image: springbootexamples:latest
+        container_name: ${APP}
+        hostname: springbootexamples
+        restart: unless-stopped
+        stdin_open: true
+        tty: true
+        environment:
+            - spring_profiles_active=dev
+            - spring_datasource_url=jdbc:mariadb://sbedb:3306/springbootexamplesdb
+            - server_port=9500
+        ports:
+            - "9500:9500"
+        depends_on:
+            - sbedb
+volumes:
+    springbootexamples_mariadb_data:
+        driver: local

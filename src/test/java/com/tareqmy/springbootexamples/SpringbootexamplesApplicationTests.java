@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+//loads full application into context. good for integration testing
 @SpringBootTest
 class SpringbootexamplesApplicationTests {
 
